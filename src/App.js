@@ -8,9 +8,17 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons : [
-      {name: 'Om', age: 28},
-      {name: 'Akash', age: 26},
-      {name: 'Someone Else', age: 21}
+      {id:'1', name: 'Om', age: 28},
+      {
+        id: '2',
+        name: 'Akash',
+        age: 26
+      },
+      {
+        id: '3',
+        name: 'Someone Else',
+        age: 21
+      }
     ],
     someOther: 'some other value',
     showPersons: false
@@ -58,8 +66,12 @@ class App extends Component {
     if(this.state.showPersons){
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return <Person click={this.deletePersonHandler.bind(this,index)} name={person.name} age={person.age} />
+          {this.state.persons.map((person, index, id) => {
+            return <Person
+             key={person.id}
+             click={this.deletePersonHandler.bind(this,index)}
+             name={person.name}
+             age={person.age} />
           })}
           {/* <Person name={this.state.persons[0].name} age={this.state.persons[0].age} /> */}
 
