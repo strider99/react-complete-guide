@@ -69,7 +69,12 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+
+      }
     };
     let persons = null;
     if(this.state.showPersons){
@@ -93,6 +98,10 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = 'red';
+      // style[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // };
     }
 
     // if 2 persons then red, if 1 then red and bold using dynamic classes
