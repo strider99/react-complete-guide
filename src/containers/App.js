@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import './App.css';
-import Person from './Person/Person';
+import classes from './App.css';
+import Person from '../components/Persons/Person/Person';
 
 
 
@@ -105,20 +105,22 @@ class App extends Component {
     }
 
     // if 2 persons then red, if 1 then red and bold using dynamic classes
-    const classes = [];
+    const assignedClasses = [];
     if(this.state.persons.length <= 2){
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if(this.state.persons.length <= 1){
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
 
     return (
-      <div className="App">
-        <h1>Hi, I am a react App</h1>
-        <p className={classes.join(' ')} >This is really working.</p>
-        <button style={style} onClick={this.togglePersonHandler} >Toggle Name</button>
+      <div className={classes.App}>
+        <h1></h1>
+        < p className = {
+          assignedClasses.join(' ')
+        } > Accounts and Details </p>
+        <button style={style} onClick={this.togglePersonHandler} >Toggle Details</button>
         {persons}
 
 
