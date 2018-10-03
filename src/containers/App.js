@@ -81,13 +81,7 @@ class App extends Component {
     let persons = null;
     if(this.state.showPersons){
 
-      persons = (
-        <div>
-          <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed={this.nameChangedHandler} />
-
-
-        </div>
-      );
+      persons = <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed={this.nameChangedHandler} />;
       style.backgroundColor = 'red';
     }
 
@@ -98,8 +92,7 @@ class App extends Component {
       <div className={classes.App}>
         <Cockpit
         showPersons = {this.state.showPersons}
-        persons = {this.state.persons}
-         />
+        persons = {this.state.persons} clicked={this.togglePersonHandler} />
 
         {persons}
       </div>
