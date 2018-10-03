@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 
 
@@ -45,6 +46,7 @@ class App extends Component {
   }
 
   togglePersonHandler = () => {
+    console.log("i am reaching");
     const doesShow = this.state.showPersons;
     this.setState({
       showPersons: !doesShow
@@ -81,51 +83,25 @@ class App extends Component {
 
       persons = (
         <div>
-          {this.state.persons.map((person, index, id) => {
-            return <Person
-             key={person.id}
-             click={this.deletePersonHandler.bind(this,index)}
-             name={person.name}
-             age={person.age}
-             changed={(event) =>this.nameChangedHandler(event, person.id)} />
-          })}
-          {/* <Person name={this.state.persons[0].name} age={this.state.persons[0].age} /> */}
+          <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed={this.nameChangedHandler} />
 
-          {/* <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} /> */}
-
-          {/* <Person name={this.state.persons[2].name} age={this.state.persons[2].age} /> */}
 
         </div>
       );
       style.backgroundColor = 'red';
-      // style[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'black'
-      // };
     }
 
-    // if 2 persons then red, if 1 then red and bold using dynamic classes
-    const assignedClasses = [];
-    if(this.state.persons.length <= 2){
-      assignedClasses.push(classes.red);
-    }
-    if(this.state.persons.length <= 1){
-      assignedClasses.push(classes.bold);
-    }
+
 
 
     return (
       <div className={classes.App}>
-        <h1></h1>
-        < p className = {
-          assignedClasses.join(' ')
-        } > Accounts and Details </p>
-        <button style={style} onClick={this.togglePersonHandler} >Toggle Details</button>
+        <Cockpit
+        showPersons = {this.state.showPersons}
+        persons = {this.state.persons}
+         />
+
         {persons}
-
-
-
-        {/* <Person name="Jimbo" >My hobbies are horse riding.</Person> */}
       </div>
     );
   }
